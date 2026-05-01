@@ -1,8 +1,8 @@
 {
   "expo": {
     "name": "Mela",
-    "slug": "Mela",
-    "version": "1.0.0",
+    "slug": "my-app",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "Mela",
@@ -18,7 +18,8 @@
     "android": {
       "package": "com.yonas.balanceapp",
       "permissions": [
-        "READ_SMS"
+        "READ_SMS",
+        "SCHEDULE_EXACT_ALARM"
       ],
       "adaptiveIcon": {
         "backgroundColor": "#0B9600",
@@ -64,6 +65,7 @@
       "eas": {
         "projectId": "0bbcefdb-a040-4cf2-afd0-bf0389e7415b"
       }
-    }
+    },
+    "owner": "yonas122"
   }
 }

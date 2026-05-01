@@ -2,8 +2,9 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { LinearGradient } from 'expo-linear-gradient';
+import * as Notifications from 'expo-notifications';
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Image, Modal, PermissionsAndroid, Platform, SafeAreaView, ScrollView, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Alert, Image, Modal, PermissionsAndroid, Platform, SafeAreaView, ScrollView, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { AppColors } from '../constants/theme';
 import ExpoSmsReaderModule from '../modules/expo-sms-reader';
 import { buildHistoryFromSms, saveSnapshot } from '../utils/balanceHistory';
@@ -139,6 +140,29 @@ export default function App() {
       } else {
         setError('SMS Permission Denied. We cannot show your balances.');
       }
+
+      // After SMS is handled, request Notification permission
+      const { status } = await Notifications.requestPermissionsAsync();
+      if (status !== 'granted') {
+        Alert.alert(
+          'Permission Required',
+          'Please enable notifications in your device settings to receive plan reminders.',
+          [{ text: 'OK' }]
+        );
+      } else {
+        if (Platform.OS === 'android') {
+          await Notifications.setNotificationChannelAsync('income-reminders', {
+            name: 'Income Reminders',
+            importance: Notifications.AndroidImportance.MAX,
+            vibrationPattern: [0, 250, 250, 250],
+            lightColor: AppColors.primaryGreenStart,
+            sound: 'default.wav',
+            enableVibrate: true,
+            showBadge: true,
+          });
+        }
+      }
+
     } catch (err) {
       setError('Failed to request permission.');
     }

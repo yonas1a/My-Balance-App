@@ -109,57 +109,17 @@ export default function PlanScreen() {
     let notificationId: string | undefined;
     let repeatingNotificationId: string | undefined;
 
-    const now = new Date();
+    const now = Date.now();
     const scheduleTime = date.getTime();
-    const secondsUntilFirst = Math.floor((scheduleTime - now.getTime()) / 1000);
-
-    let notfication_title = ""
-    let notfication_body = ""
-
-    if (planType == "Rent") {
-      notfication_title = "Rent Payment Reminder:"
-      notfication_body = `Your rent of ${Intl.NumberFormat().format(parseInt(amount))} ETB is due today.\nNote: ${note}`
-    } else if (planType == "Saving") {
-
-      notfication_title = "Savings Goal:"
-      notfication_body = `Deposit ${Intl.NumberFormat().format(parseInt(amount))} ETB towards your savings goal today!\nNote: ${note}`
-    } else if (planType == "Equb") {
-
-      notfication_title = "Equb Payment:"
-      notfication_body = `Your ${Intl.NumberFormat().format(parseInt(amount))} ETB Equb payment is due today!\nNote: ${note}`
-    } else if (planType == "Loan") {
-      if (planCategory == "expense") {
-        notfication_title = "Loan Repayment:"
-        notfication_body = `Your ${Intl.NumberFormat().format(parseInt(amount))} ETB loan repayment is due today\nNote: ${note}`
-      } else {
-        notfication_title = "Loan collection:"
-        notfication_body = `Collect your ${Intl.NumberFormat().format(parseInt(amount))} ETB loan\nNote: ${note}`
-      }
-    } else if (planType == "Bills") {
-
-      notfication_title = "Bills Reminder:"
-      notfication_body = `Your ${Intl.NumberFormat().format(parseInt(amount))} ETB bills is due today\nNote: ${note}`
-    }
-    else {
-      if (planCategory == "expense") {
-        notfication_title = "Expense Reminder:"
-        notfication_body = `Your ${Intl.NumberFormat().format(parseInt(amount))} ETB expense is due today\nNote: ${note}`
-
-      } else {
-        notfication_title = "Income Reminder:"
-        notfication_body = `Your ${Intl.NumberFormat().format(parseInt(amount))} ETB income is due today\nNote: ${note}`
-      }
-
-    }
-
+    const secondsUntilFirst = Math.floor((scheduleTime - now) / 1000);
 
     if (secondsUntilFirst > 0) {
 
       // --- Notification 1: One-time, fires exactly at the selected date/time ---
       notificationId = await Notifications.scheduleNotificationAsync({
         content: {
-          title: notfication_title,
-          body: notfication_body,
+          title: `📅 ${planType} Reminder`,
+          body: `Your ${planCategory === 'expense' ? 'budget' : 'income'} plan of ${amount} ETB is due.`,
         },
         trigger: {
           type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
@@ -184,8 +144,8 @@ export default function PlanScreen() {
 
         repeatingNotificationId = await Notifications.scheduleNotificationAsync({
           content: {
-            title: notfication_title,
-            body: notfication_body,
+            title: `🔁 ${planType} Reminder`,
+            body: `Recurring ${billingCycle} reminder: ${amount} ETB.`,
           },
           trigger: {
             type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
@@ -196,7 +156,6 @@ export default function PlanScreen() {
         });
       }
 
-      console.log(planType)
       console.log('One-time notification ID:', notificationId);
       console.log('Repeating notification ID:', repeatingNotificationId);
 
@@ -312,8 +271,7 @@ export default function PlanScreen() {
                   {item.note && <Text style={styles.itemNoteText}>{item.note}</Text>}
                   {/* Notification badge indicators */}
                   <View style={styles.badgeRow}>
-                    {/* let disable this if the reminder is repating this only mus t be enabled if its only once  */}
-                    {item.notificationId && item.period == "once" && (
+                    {item.notificationId && (
                       <View style={styles.badge}>
                         <MaterialCommunityIcons name="bell-outline" size={11} color="#FFF" />
                         <Text style={styles.badgeText}>Once</Text>

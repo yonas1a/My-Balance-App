@@ -161,7 +161,7 @@ export default function AnalyticsScreen() {
           <Text style={styles.title}>Analytics</Text>
         </View>
 
-        <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
 
           {/* Balance header */}
           <View style={styles.balanceSection}>
@@ -355,7 +355,7 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
   },
   title: { fontSize: 18, fontWeight: '500', color: AppColors.text },
-  scrollContent: { paddingHorizontal: 24, paddingTop: 10, paddingBottom: 0 },
+  scrollContent: { paddingHorizontal: 24, paddingTop: 10, paddingBottom: 30 },
   balanceSection: { marginBottom: 16 },
   balanceLabel: { fontSize: 13, color: AppColors.subText, marginBottom: 4, fontWeight: '500' },
   balanceText: { fontSize: 30, fontWeight: '800', color: AppColors.text, letterSpacing: -0.5, marginBottom: 8 },
@@ -433,11 +433,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 30,
-    paddingVertical: 16,
+    paddingVertical: 14,
     backgroundColor: AppColors.card,
-    borderTopWidth: 1,
-    borderTopColor: AppColors.border,
-    marginTop: -50,
+    borderRadius: 25,
+    marginHorizontal: 24,
+    marginBottom: 135, // Positioned above the floating tab bar (50 bottom + 75 height + 10 gap)
+    elevation: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
   },
   tfItem: { width: 44, height: 36, borderRadius: 18, justifyContent: 'center', alignItems: 'center' },
   tfItemActive: { backgroundColor: AppColors.primaryGreenEnd },

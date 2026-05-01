@@ -1,50 +1,70 @@
-# Welcome to your Expo app 👋
+# Mela (መላ) — Financial Empowerment for Ethiopia 🇪🇹
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+[![Project Status: Active](https://img.shields.io/badge/Project%20Status-Active-green.svg)](https://github.com/yonas1a/My-Balance-App)
+[![Platform: Android](https://img.shields.io/badge/Platform-Android-brightgreen.svg)](https://expo.dev/artifacts/eas/2wNa54dpNkGEazRYTVQR31.apk)
 
-## Get started
+**Mela** (meaning "Solution" or "money" in Amharic) is a purpose-built financial management application designed to solve the unique challenges of the Ethiopian financial landscape. By consolidating fragmented banking data and automating expense tracking, Mela empowers users to take full control of their financial health.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## 🚀 Demo
+Experience the app today:
+**[Download Android APK (Beta)](https://expo.dev/artifacts/eas/2wNa54dpNkGEazRYTVQR31.apk)**
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🛑 The Problem
+In Ethiopia, the rapid growth of digital banking (Telebirr, CBE Birr, Awash, etc.) has led to a fragmented user experience:
+*   **Data Fragmentation**: Balances are spread across multiple SMS threads and different banking apps.
+*   **Manual Tracking**: Users struggle to track their spending habits across various platforms manually.
+*   **Missing Insights**: There is a lack of centralized analytics to show where money is going month-to-month.
+*   **Forgotten Obligations**: Users often miss bill payments or saving goals due to a lack of integrated reminders.
 
-In the output, you'll find options to open the app in a
+## ✅ The Solution
+Mela acts as a centralized financial hub that intelligently automates your money management:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### 📱 Unified Multi-Account Dashboard
+Automatically aggregates balances from Ethiopia’s major financial institutions (CBE, Telebirr, Awash, and more) by securely parsing local transaction SMS. No more switching between apps to know how much you have.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### 📊 Real-time Spending Analytics
+Beautiful, interactive charts visualize your financial history. See your highest, lowest, and average balances over time to identify trends and optimize your savings.
 
-## Get a fresh project
+### 📅 Smart Expense Planning & Reminders
+Create custom plans for rent, loan repayments, or savings goals. Mela sets intelligent reminders (one-time or recurring) to ensure you never miss a financial commitment.
 
-When you're ready, run:
+### 🔒 Privacy & Security First
+*   **Local Processing**: SMS parsing happens entirely on your device. Your financial data never leaves your phone.
+*   **PIN Protection**: Keep your sensitive data safe with an integrated PIN lock system.
+*   **Cash on Hand**: Track physical cash alongside digital balances for a truly complete financial picture.
 
-```bash
-npm run reset-project
-```
+---
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🛠 Tech Stack
+*   **Framework**: [React Native](https://reactnative.dev/) with [Expo](https://expo.dev/)
+*   **Animation**: [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/) for a premium UI/UX
+*   **Storage**: [AsyncStorage](https://react-native-async-storage.github.io/async-storage/) for secure local data persistence
+*   **Native Modules**: Custom SMS reader module for Android
 
-## Learn more
+## 🏗 Installation (Developers)
 
-To learn more about developing your project with Expo, look at the following resources:
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/yonas1a/My-Balance-App.git
+    cd My-Balance-App
+    ```
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
+3.  **Run the project (Android)**
+    ```bash
+    npx expo run:android
+    ```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
+## 🌟 Support & Sponsorship
+We are looking for partners and sponsors to help scale Mela and bring financial literacy tools to millions of Ethiopians. If you are interested in supporting this mission-driven project, please reach out!
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
+*Created with ❤️ for the Ethiopian community.*
